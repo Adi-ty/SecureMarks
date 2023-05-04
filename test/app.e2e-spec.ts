@@ -7,6 +7,7 @@ import {
 import * as pactum from 'pactum';
 import { PrismaService } from '../src/prisma/prisma.service';
 import { AuthDto } from '../src/auth/dto';
+import { EditUserDto } from '../src/user/dto';
 
 describe('App e2e', () => {
   let app: INestApplication;
@@ -120,6 +121,13 @@ describe('App e2e', () => {
 
   describe('User', () => {
     describe('Get me', () => {
+      it('should throw unauthorized if access token not present', () => {
+        return pactum
+          .spec()
+          .get('/users/me')
+          .expectStatus(401);
+      });
+
       it('should get current user', () => {
         return pactum
           .spec()
@@ -131,7 +139,24 @@ describe('App e2e', () => {
       });
     });
 
-    describe('Edit user', () => {});
+    describe('Edit user', () => {
+      it('should get edit user', () => {
+        const dto: EditUserDto = {
+          firstName: 'Akshara',
+          email: 'test1@email.com',
+        };
+        return pactum
+          .spec()
+          .patch('/users')
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .withBody(dto)
+          .expectStatus(200)
+          .expectBodyContains(dto.firstName)
+          .expectBodyContains(dto.email);
+      });
+    });
   });
 
   describe('Bookmarks', () => {

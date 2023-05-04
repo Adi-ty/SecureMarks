@@ -4,9 +4,12 @@ import {
   INestApplication,
   ValidationPipe,
 } from '@nestjs/common';
+import { PrismaService } from '../src/prisma/prisma.service';
 
 describe('App e2e', () => {
   let app: INestApplication;
+  let prisma: PrismaService;
+
   beforeAll(async () => {
     const moduleRef =
       await Test.createTestingModule({
@@ -19,10 +22,40 @@ describe('App e2e', () => {
       }),
     );
     await app.init();
+
+    prisma = app.get(PrismaService);
+    await prisma.cleanDb();
   });
 
   afterAll(() => {
     app.close();
   });
-  it.todo('should pass');
+
+  describe('Auth', () => {
+    describe('Signup', () => {
+      it.todo('should signup');
+    });
+
+    describe('Signin', () => {
+      it.todo('should signin');
+    });
+  });
+
+  describe('User', () => {
+    describe('Get me', () => {});
+
+    describe('Edit user', () => {});
+  });
+
+  describe('Bookmarks', () => {
+    describe('Create bookmark', () => {});
+
+    describe('Get bookmarks', () => {});
+
+    describe('Get bookmark by id', () => {});
+
+    describe('Edit bookmark', () => {});
+
+    describe('Delete bookmark', () => {});
+  });
 });

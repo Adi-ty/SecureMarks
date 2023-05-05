@@ -68,78 +68,79 @@ Currently only following routes are available in SecureMarks:
 ### Authentication
 
 - `POST /auth/singup`
+    Creates new user with provided email id and password
 
-Creates new user with provided email id and password
+    Request body:
 
-Request body:
-
-```
-{
-  "email": "test@email.com",
-  "password": "abcdef"
-}
-```
+    ```
+    {
+      "email": "test@email.com",
+      "password": "abcdef"
+    }
+    ```
 
 - `POST /auth/singin`
-  Authenticates a user and returns an access token
+    Authenticates a user and returns an access token
 
-Request body:
+    Request body:
 
-```
-{
-  "email": "test@email.com",
-  "password": "1234"
-}
+    ```
+    {
+      "email": "test@email.com",
+      "password": "1234"
+    }
 
-```
+    ```
 
 ### User
 
 - `GET /users/me`
-  Returns the authenticated users information
+    Returns the authenticated users information
 - `PATCH /users/:id`
-  Updates the authenticated user's information
-  
-  Request body:
+    Updates the authenticated user's information
 
-```
-{
-  "firstName": "Adi",
-  "email": "test1@email.com"
-}
-```
+    Request body:
+
+    ```
+    {
+      "firstName": "Adi",
+      "email": "test1@email.com"
+    }
+    ```
 
 ### Bookmarks
 
 - `GET /bookmarks`
-Returns a list of all bookmarks for the authenticated user
+    Returns a list of all bookmarks for the authenticated user
 
 - `GET /bookmarks/:id`
-Returns the bookmark of the specified ID for the authenticated user
+    Returns the bookmark of the specified ID for the authenticated user
 
 - `POST /bookmarks`
-Creates a new bookmark for the authenticated user
+    Creates a new bookmark for the authenticated user
 
-Request body:
-```
-{
-  "title": "Example Bookmark",
-  "link": "http://github.com/adi-ty"
-}
-```
+    Request body:
+    ```
+    {
+      "title": "Example Bookmark",
+      "link": "http://github.com/adi-ty"
+    }
+    ```
 
 - `PATCH /bookmarks/:id`
-Edit the bookmarks with the specified ID if that bookmark belongs to that particular user
+    Edit the bookmarks with the specified ID if that bookmark belongs to that particular user
 
-Request body: 
-{
-        title: 'Aditya Singh Github',
-        description:
-          'Aditya is a full stack developer',
-}
+    Request body: 
+    ```
+    {
+            title: 'Aditya Singh Github',
+            description:
+              'Aditya is a full stack developer',
+    }
+    ```
 
 - `DELETE /bookmarks/:id`
-Deletes the bookmark with the specified ID if that bookmark belongs to that authenticated user
+    Deletes the bookmark with the specified ID if that bookmark belongs to that authenticated user
 
 ## Contributing 
 If you'd like to contribute to SecureMarks, feel free to open an issue or submit a pull request.

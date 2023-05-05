@@ -106,7 +106,8 @@ Request body:
 - `GET /users/me`
   Returns the authenticated users information
 - `PATCH /users/:id`
-  Updates the authenticated user's information.
+  Updates the authenticated user's information
+  
   Request body:
 
 ```
@@ -116,4 +117,38 @@ Request body:
 }
 ```
 
-### Bookmark
+### Bookmarks
+
+- `GET /bookmarks`
+Returns a list of all bookmarks for the authenticated user
+
+- `GET /bookmarks/:id`
+Returns the bookmark of the specified ID for the authenticated user
+
+- `POST /bookmarks`
+Creates a new bookmark for the authenticated user
+
+Request body:
+```
+{
+  "title": "Example Bookmark",
+  "link": "http://github.com/adi-ty"
+}
+```
+
+- `PATCH /bookmarks/:id`
+Edit the bookmarks with the specified ID if that bookmark belongs to that particular user
+
+Request body: 
+{
+        title: 'Aditya Singh Github',
+        description:
+          'Aditya is a full stack developer',
+}
+
+- `DELETE /bookmarks/:id`
+Deletes the bookmark with the specified ID if that bookmark belongs to that authenticated user
+
+## Contributing 
+If you'd like to contribute to SecureMarks, feel free to open an issue or submit a pull request.
+

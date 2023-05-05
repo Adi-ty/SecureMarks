@@ -9,8 +9,6 @@ SecureMarks is a RESTful API that allows users to manage bookmarks with secure a
 - Clone the repo
 
 ```
-bash
-
 git clone https://github.com/Adi-ty/SecureMarks.git
 cd SecureMarks
 ```
@@ -40,8 +38,6 @@ yarn db:dev:restart
 - Running the app
 
 ```
-shell
-
 # development
 $ yarn run start
 
@@ -56,12 +52,8 @@ $ yarn run start:prod
 - To run all the e2e tests
 
 ```
-
-
 # e2e tests
 $ yarn run test:e2e
-
-
 ```
 
 ## Getting Started
